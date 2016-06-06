@@ -1,0 +1,14 @@
+{
+    "name": "morilog/json-api",
+    "description": "Json Responses that i user in my projects",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Morteza Parvini",
+            "email": "m.parvini@outlook.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
