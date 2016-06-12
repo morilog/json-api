@@ -9,6 +9,16 @@
             "email": "m.parvini@outlook.com"
         }
     ],
+    "autoload": {
+    	"psr-4": {
+    		"Morilog\\JsonApi\\": "src/"
+    	}
+    },
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "illuminate/http": "5.1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
 }
