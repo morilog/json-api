@@ -14,7 +14,6 @@
     		"Morilog\\JsonApi\\": "src/"
     	}
     },
-    "minimum-stability": "stable",
     "require": {
         "illuminate/http": "5.1.*"
     },
