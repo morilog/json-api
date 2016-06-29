@@ -5,6 +5,7 @@ use Illuminate\Contracts\Support\MessageBag;
 use Morilog\JsonApi\Responses\DestroyJsonApiResponse;
 use Morilog\JsonApi\Responses\IndexJsonApiResponse;
 use Morilog\JsonApi\Responses\PaginationJsonApiResponse;
+use Morilog\JsonApi\Responses\StoreJsonApiResponse;
 use Morilog\JsonApi\Responses\UpdateJsonApiResponse;
 use Morilog\JsonApi\Responses\ValidationJsonApiResponse;
 
