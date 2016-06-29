@@ -36,7 +36,7 @@ class StoreJsonApiResponse extends BaseJsonApiResponse implements JsonApiRespons
     {
         $this->presenter = (new JsonApiPresenter())
             ->setStatus(ResponseStatuses::SUCCESS)
-            ->setMessage(ResponseMessages::CREATED)
+            ->setMessage(ResponseMessages::STORED)
             ->setDataMainKey($dataKey)
             ->setData($data)
             ->setStatusCode(Response::HTTP_CREATED);
