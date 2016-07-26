@@ -22,20 +22,23 @@ class PaginationJsonApiResponse extends BaseJsonApiResponse implements JsonApiRe
      * @param $dataKey
      * @param $data
      * @param null $pagination
+     * @param null $extraData
      */
-    public function __construct($dataKey, $data, $pagination = null)
+    public function __construct($dataKey, $data, $pagination = null, $extraData = null)
     {
-        $this->prepare($dataKey, $data, $pagination);
+        $this->prepare($dataKey, $data, $pagination, $extraData);
     }
 
     /**
      * @param null $dataKey
      * @param null $data
      * @param null $pagination
+     * @param null $extraData
      */
-    public function prepare($dataKey = null, $data = null, $pagination = null)
+    public function prepare($dataKey = null, $data = null, $pagination = null, $extraData = null)
     {
         $this->presenter = (new JsonApiPresenter())
+            ->setExtraData($extraData)
             ->setStatus(ResponseStatuses::SUCCESS)
             ->setMessage(ResponseMessages::FOUND)
             ->setDataMainKey($dataKey)

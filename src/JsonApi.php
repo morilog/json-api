@@ -1,7 +1,9 @@
 <?php
 namespace Morilog\JsonApi;
 
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\MessageBag;
+use Illuminate\Http\JsonResponse;
 use Morilog\JsonApi\Responses\DestroyJsonApiResponse;
 use Morilog\JsonApi\Responses\IndexJsonApiResponse;
 use Morilog\JsonApi\Responses\PaginationJsonApiResponse;
@@ -18,15 +20,17 @@ class JsonApi
     /**
      * @param $dataKey
      * @param $data
+     * @param null $extraData
      * @return IndexJsonApiResponse
      */
-    public static function indexResponse($dataKey, $data)
+    public static function indexResponse($dataKey, $data, $extraData = null)
     {
-        return (new IndexJsonApiResponse($dataKey, $data))->getResponse();
+        return (new IndexJsonApiResponse($dataKey, $data, $extraData))->getResponse();
     }
 
     /**
      * @param MessageBag $errors
+     * @param null $extraData
      * @return ValidationJsonApiResponse
      */
     public static function validationResponse(MessageBag $errors)
@@ -38,25 +42,28 @@ class JsonApi
     /**
      * @param $dataKey
      * @param $resource
+     * @param null $extraData
      * @return JsonResponse
      */
-    public static function storeResponse($dataKey, $resource)
+    public static function storeResponse($dataKey, $resource, $extraData = null)
     {
-        return (new StoreJsonApiResponse($dataKey, $resource))
+        return (new StoreJsonApiResponse($dataKey, $resource, $extraData))
             ->getResponse();
     }
 
     /**
      * @param $dataKey
      * @param AbstractPaginator|Paginator $pagination
+     * @param null $extraData
      * @return JsonResponse
      */
-    public static function paginationResponse($dataKey, AbstractPaginator $pagination)
+    public static function paginationResponse($dataKey, AbstractPaginator $pagination, $extraData = null)
     {
         return (new PaginationJsonApiResponse(
             $dataKey,
             $pagination->getCollection(),
-            $pagination->toArray())
+            $pagination->toArray(),
+            $extraData)
         )->getResponse();
     }
 
@@ -72,10 +79,11 @@ class JsonApi
     /**
      * @param null $dataKey
      * @param null $data
+     * @param null $extraData
      * @return JsonResponse
      */
-    public static function updateResponse($dataKey = null, $data = null)
+    public static function updateResponse($dataKey = null, $data = null, $extraData = null)
     {
-        return (new UpdateJsonApiResponse($dataKey, $data))->getResponse();
+        return (new UpdateJsonApiResponse($dataKey, $data, $extraData))->getResponse();
     }
 }

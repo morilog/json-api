@@ -39,7 +39,14 @@ class JsonApiPresenter
      */
     private $statusCode = 400;
 
+    /**
+     * @var
+     */
+    private $extraData;
 
+    /**
+     * @var array
+     */
     private $pagination = [];
 
     /**
@@ -100,6 +107,10 @@ class JsonApiPresenter
             $this->getDataMainKey() => $this->data,
             'mainKey' => $this->getDataMainKey(),
         ];
+
+        if (is_array($this->getExtraData())) {
+            return array_merge($data, $this->getExtraData());
+        }
 
         return $data;
     }
@@ -192,6 +203,25 @@ class JsonApiPresenter
     {
         $this->pagination = $pagination;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExtraData()
+    {
+        return $this->extraData;
+    }
+
+    /**
+     * @param $extraData
+     * @return $this
+     */
+    public function setExtraData($extraData)
+    {
+        $this->extraData = $extraData;
+        
         return $this;
     }
 }

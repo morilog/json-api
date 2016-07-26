@@ -29,10 +29,12 @@ class DestroyJsonApiResponse extends BaseJsonApiResponse implements JsonApiRespo
      * @param null $dataKey
      * @param null $data
      * @param null $pagination
+     * @param null $extraData
      */
-    public function prepare($dataKey = null, $data = null, $pagination = null)
+    public function prepare($dataKey = null, $data = null, $pagination = null, $extraData = null)
     {
         $this->presenter = (new JsonApiPresenter())
+            ->setExtraData($extraData)
             ->setStatus(ResponseStatuses::SUCCESS)
             ->setMessage(ResponseMessages::DELETED)
             ->setStatusCode(Response::HTTP_ACCEPTED);

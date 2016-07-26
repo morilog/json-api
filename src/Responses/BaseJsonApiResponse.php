@@ -11,7 +11,7 @@ abstract class BaseJsonApiResponse
      * @param string $dataKey
      * @param string|array $data
      * @param null $pagination
-     * @return void
+     * @param null $extraData
      */
-    abstract public function prepare($dataKey = null, $data = null, $pagination = null);
+    abstract public function prepare($dataKey = null, $data = null, $pagination = null, $extraData = null);
 }

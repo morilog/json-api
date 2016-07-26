@@ -47,10 +47,12 @@ class ValidationJsonApiResponse extends BaseJsonApiResponse implements JsonApiRe
      * @param null $dataKey
      * @param null $data
      * @param null $pagination
+     * @param null $extraData
      */
-    public function prepare($dataKey = null, $data = null, $pagination = null)
+    public function prepare($dataKey = null, $data = null, $pagination = null, $extraData = null)
     {
         $this->presenter = (new JsonApiPresenter())
+            ->setExtraData($extraData)
             ->setData($data)
             ->setDataMainKey($dataKey)
             ->setStatus(ResponseStatuses::FAIL)
