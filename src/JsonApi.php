@@ -53,7 +53,7 @@ class JsonApi
 
     /**
      * @param $dataKey
-     * @param AbstractPaginator|Paginator $pagination
+     * @param Illuminate\Pagination\AbstractPaginator|Paginator $pagination
      * @param null $extraData
      * @return JsonResponse
      */
