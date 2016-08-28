@@ -1,7 +1,6 @@
 <?php
 namespace Morilog\JsonApi;
 
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Http\JsonResponse;
 use Morilog\JsonApi\Responses\DestroyJsonApiResponse;
@@ -53,11 +52,11 @@ class JsonApi
 
     /**
      * @param $dataKey
-     * @param Illuminate\Pagination\AbstractPaginator|Paginator $pagination
+     * @param \Illuminate\Contracts\Pagination $pagination
      * @param null $extraData
      * @return JsonResponse
      */
-    public static function paginationResponse($dataKey, AbstractPaginator $pagination, $extraData = null)
+    public static function paginationResponse($dataKey, $pagination, $extraData = null)
     {
         return (new PaginationJsonApiResponse(
             $dataKey,
