@@ -28,12 +28,15 @@ class JsonApi
     }
 
     /**
-     * @param MessageBag $errors
-     * @param null $extraData
+     * @param MessageBag|array $errors
      * @return ValidationJsonApiResponse
      */
-    public static function validationResponse(MessageBag $errors)
+    public static function validationResponse($errors)
     {
+        if ($errors instanceof MessageBag) {
+            $errors = $errors->all();
+        }
+
         return (new ValidationJsonApiResponse($errors))->getResponse();
     }
 
@@ -62,8 +65,8 @@ class JsonApi
             $dataKey,
             $pagination->getCollection(),
             $pagination->toArray(),
-            $extraData)
-        )->getResponse();
+            $extraData
+        ))->getResponse();
     }
 
 

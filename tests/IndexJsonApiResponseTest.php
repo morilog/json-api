@@ -1,5 +1,7 @@
 <?php
 
+use Morilog\JsonApi\ResponseStatuses;
+
 class IndexJsonApiResponseTest extends PHPUnit_Framework_TestCase
 {
     public function testPrepare()
@@ -14,8 +16,7 @@ class IndexJsonApiResponseTest extends PHPUnit_Framework_TestCase
         $response = $indexResponse->getResponse();
 
         $this->assertTrue(json_decode($response->getContent(), true)['data']['mainKey'] === 'testData');
-        $this->assertTrue(json_decode($response->getContent(),
-                true)['status'] === \Morilog\JsonApi\ResponseStatuses::SUCCESS);
+        $this->assertTrue(json_decode($response->getContent(), true)['status'] === ResponseStatuses::SUCCESS);
         
         $this->assertTrue(json_decode($response->getContent(), true)['data']['url'] === 'http://morilog.ir');
         

@@ -21,11 +21,11 @@ class ValidationJsonApiResponse extends BaseJsonApiResponse implements JsonApiRe
 
     /**
      * ValidationJsonApiResponse constructor.
-     * @param MessageBag $errors
+     * @param array $errors
      */
-    public function __construct(MessageBag $errors)
+    public function __construct(array $errors)
     {
-        $this->prepare('errors', $this->normalizeErrors($errors->all()));
+        $this->prepare('errors', $this->normalizeErrors($errors));
     }
 
     /**
